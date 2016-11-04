@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 public class WorldRenderer {
 	private RifleGame rifleGame;
 	private World world;
-	private Texture rifleImg, bulletImg;
+	private Texture rifleImg, bulletImg, bgImg;
 	private SpriteBatch batch;
 	private Rifle rifle;
 	private Bullet bullet;
@@ -22,6 +22,7 @@ public class WorldRenderer {
  
         rifleImg = new Texture("Rifle.png");
         bulletImg = new Texture("Bullet.png");
+        bgImg = new Texture("Background.png");
         
         rifle = world.getRifle();
         bullet = world.getBullet();
@@ -34,6 +35,7 @@ public class WorldRenderer {
         batch.begin();
         Vector2 riflePos = world.getRifle().getPosition();
         Vector2 bulletPos = world.getRifle().getPosition();
+        batch.draw(bgImg, 0, 0);
         batch.draw(rifleImg, riflePos.x, riflePos.y);
         batch.draw(bulletImg, bulletPos.x, bulletPos.y);
         batch.end();
