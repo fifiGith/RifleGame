@@ -17,7 +17,7 @@ public class GameScreen extends ScreenAdapter {
 	 
     public GameScreen(RifleGame rifleGame) {
         this.rifleGame = rifleGame;
-        rifleImg = new Texture("Rifle.png");
+
         world = new World(rifleGame);
         worldRenderer = new WorldRenderer(rifleGame, world);
     }
