@@ -40,7 +40,7 @@ public class WorldRenderer {
     	SpriteBatch batch = rifleGame.batch;
         batch.begin();
         rifleSprite.draw(batch);
-        rifleSprite.setRotation((float) rifle.getAngle());
+        rifleSprite.setRotation(rifle.getAngle());
 //        Vector2 riflePos = world.getRifle().getPosition();
 //        Vector2 bulletPos = world.getRifle().getPosition();
 //        batch.draw(bgImg, 0, 0);
