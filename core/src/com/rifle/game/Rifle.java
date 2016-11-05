@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Vector2;
 
 public class Rifle {
@@ -12,10 +13,12 @@ public class Rifle {
 	private float angle;
 	private Bullet bullet;
 	private ArrayList<Bullet> bulletList;
+	private Sound shot;
 	 
     public Rifle(int x, int y) {
         position = new Vector2(x,y);
         bulletList = new ArrayList<Bullet>();
+        shot = Gdx.audio.newSound(Gdx.files.internal("shot.mp3"));
     }
     
     public Vector2 getPosition() {
@@ -38,10 +41,10 @@ public class Rifle {
     
     public void shoot() {
     	bulletList.add(new Bullet(this));
+    	shot.play(1.0f);
     }
     
     public void update() {
-    	updateAngle();
     	if (Gdx.input.justTouched()) {
     	    shoot();
     	}

@@ -2,6 +2,7 @@ package com.rifle.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,10 +18,14 @@ public class WorldRenderer {
 	private Texture rifleImg, bulletImg, bgImg;
 
 	public WorldRenderer(RifleGame rifleGame, World world) {
-        this.rifleGame = rifleGame;
-        batch = rifleGame.batch;
+//        this.rifleGame = rifleGame;
+        batch = RifleGame.batch;
  
         this.world = world;
+        
+        Pixmap pm = new Pixmap(Gdx.files.internal("Cursor.png"));
+        Gdx.graphics.setCursor(Gdx.graphics.newCursor(pm, 8, 8));
+        pm.dispose();
         
         rifle = world.getRifle();
         bullet = world.getBullet();
@@ -36,7 +41,6 @@ public class WorldRenderer {
     }
 	
     public void render(float delta) {
-    	SpriteBatch batch = rifleGame.batch;
     	world.getRifle().update();
         batch.begin();
         rifleSprite.draw(batch);
