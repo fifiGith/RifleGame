@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bullet {
-	public static final float SPEED = 30f;
+	public static final float SPEED = 60f;
 	
 	private Vector2 vector;
     private Sprite bulletSprite;

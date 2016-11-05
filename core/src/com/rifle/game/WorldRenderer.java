@@ -24,7 +24,7 @@ public class WorldRenderer {
         this.world = world;
         
         Pixmap pm = new Pixmap(Gdx.files.internal("Cursor.png"));
-        Gdx.graphics.setCursor(Gdx.graphics.newCursor(pm, 8, 8));
+        Gdx.graphics.setCursor(Gdx.graphics.newCursor(pm, 16, 16));
         pm.dispose();
         
         rifle = world.getRifle();
