@@ -11,6 +11,7 @@ public class World {
 	World(RifleGame rifleGame) {
 		this.rifleGame = rifleGame;
 		
+		
 		rifle = new Rifle(X, Y);
 	}
 	

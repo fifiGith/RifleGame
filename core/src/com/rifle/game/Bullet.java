@@ -11,24 +11,25 @@ public class Bullet {
 	private Vector2 vector;
     private Sprite bulletSprite;
     private Texture bulletImg;
-    private RifleGame rifleGame;
+    private Rifle rifle;
     public SpriteBatch batch;
 	
-	public Bullet(Rifle rifle) {
+	public Bullet(Vector2 pos, float angle) {
 		vector = new Vector2();
-		Vector2 pos = rifle.getPosition();
-		float angle = rifle.getAngle();
+//		Vector2 pos = rifle.getPosition();
+//		float angle = rifle.getAngle();
 		vector.set(pos);
-		batch = rifleGame.batch;
-		bulletImg = new Texture("Bullet.png");
+		batch = RifleGame.batch;
+		bulletImg = new Texture("BulletTest.png");
 		bulletSprite = new Sprite(bulletImg);
 		bulletSprite.setOriginCenter();
 		bulletSprite.setPosition(vector.x, vector.y);
 		bulletSprite.setRotation(angle);
 	}
 	
-	public void render(float delta) {
+	public void render() {
 		bulletSprite.translate(vector.x * SPEED, vector.y * SPEED);
+		System.out.println("Bullet");
 		batch.begin();
 		bulletSprite.draw(batch);
 		batch.end();

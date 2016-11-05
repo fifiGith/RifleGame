@@ -1,6 +1,9 @@
 package com.rifle.game;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Vector2;
 
 public class Rifle {
@@ -8,9 +11,11 @@ public class Rifle {
 	private World world;
 	private float angle;
 	private Bullet bullet;
+	private ArrayList<Bullet> bulletList;
 	 
     public Rifle(int x, int y) {
         position = new Vector2(x,y);
+        bulletList = new ArrayList<Bullet>();
     }
     
     public Vector2 getPosition() {
@@ -32,7 +37,16 @@ public class Rifle {
     }
     
     public void shoot() {
-    	bullet = new Bullet(this);
-    	bullet.render(1);
+    	bulletList.add(new Bullet(getPosition(), getAngle()));
+    }
+    
+    public void update() {
+    	updateAngle();
+    	if (Gdx.input.justTouched()) {
+    	    shoot();
+    	}
+    	for (Bullet bullet : bulletList) {
+    	    bullet.render();
+    	}
     }
 }

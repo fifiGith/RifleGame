@@ -36,7 +36,6 @@ public class WorldRenderer {
     }
 	
     public void render(float delta) {
-    	System.out.println(rifle.getAngle());
     	Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     	SpriteBatch batch = rifleGame.batch;
