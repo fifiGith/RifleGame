@@ -37,7 +37,7 @@ public class Rifle {
     }
     
     public void shoot() {
-    	bulletList.add(new Bullet(getPosition(), getAngle()));
+    	bulletList.add(new Bullet(this));
     }
     
     public void update() {

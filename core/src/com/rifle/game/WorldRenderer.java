@@ -36,17 +36,11 @@ public class WorldRenderer {
     }
 	
     public void render(float delta) {
-    	Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     	SpriteBatch batch = rifleGame.batch;
+    	world.getRifle().update();
         batch.begin();
         rifleSprite.draw(batch);
         rifleSprite.setRotation(rifle.getAngle());
-//        Vector2 riflePos = world.getRifle().getPosition();
-//        Vector2 bulletPos = world.getRifle().getPosition();
-//        batch.draw(bgImg, 0, 0);
-//        batch.draw(rifleImg, riflePos.x, riflePos.y);
-//        batch.draw(bulletImg, bulletPos.x, bulletPos.y);
         batch.end();
     }
 }
