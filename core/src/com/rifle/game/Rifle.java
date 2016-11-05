@@ -7,6 +7,7 @@ public class Rifle {
 	private Vector2 position;
 	private World world;
 	private float angle;
+	private Bullet bullet;
 	 
     public Rifle(int x, int y) {
         position = new Vector2(x,y);
@@ -28,5 +29,10 @@ public class Rifle {
     public float getAngle() {
     	updateAngle();
     	return angle;
+    }
+    
+    public void shoot() {
+    	bullet = new Bullet(this);
+    	bullet.render(1);
     }
 }

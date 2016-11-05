@@ -31,6 +31,8 @@ public class WorldRenderer {
         
         rifleSprite = new Sprite(rifleImg);
         rifleSprite.setOriginCenter();
+        Vector2 riflePos = world.getRifle().getPosition();
+        rifleSprite.setPosition(riflePos.x, riflePos.y);
     }
 	
     public void render(float delta) {

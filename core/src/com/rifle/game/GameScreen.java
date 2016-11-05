@@ -23,6 +23,9 @@ public class GameScreen extends ScreenAdapter {
     }
     
     private void update(float delta) {
+    	if (Gdx.input.justTouched()) {
+    		
+    	}
     }
     
     @Override
