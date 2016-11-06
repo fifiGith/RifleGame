@@ -16,7 +16,7 @@ public class Rifle {
 	private Sound shot;
 	 
     public Rifle(int x, int y) {
-        position = new Vector2(x,y);
+        position = new Vector2(x - 39, y - 13);
         bulletList = new ArrayList<Bullet>();
         shot = Gdx.audio.newSound(Gdx.files.internal("shot.mp3"));
     }

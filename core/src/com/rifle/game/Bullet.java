@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bullet {
-	public static final float SPEED = 60f;
+	public static final float SPEED = 5f;
 	
 	private Vector2 vector;
     private Sprite bulletSprite;
@@ -21,9 +21,10 @@ public class Bullet {
 		this.batch = RifleGame.batch;
 		bulletImg = new Texture("LongBullet.png");
 		bulletSprite = new Sprite(bulletImg);
-		bulletSprite.setOriginCenter();
-		bulletSprite.setPosition(pos.x, pos.y);
+		//bulletSprite.setOrigin(0, 2);
+		bulletSprite.setPosition(World.X, World.Y);
 		bulletSprite.setRotation(angle);
+		System.out.println(pos.x + "," + pos.y);
 	}
 	
 	public void render() {
