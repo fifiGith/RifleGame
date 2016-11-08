@@ -4,6 +4,7 @@ public class World {
 	private Rifle rifle;
 	private RifleGame rifleGame;
 	private Bullet bullet;
+	private Target target;
 	
 	public static final int X = 100;
 	public static final int Y = 100;
@@ -16,9 +17,5 @@ public class World {
 	
 	Rifle getRifle() {
 		return rifle;
-	}
-	
-	Bullet getBullet() {
-		return bullet;
 	}
 }

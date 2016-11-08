@@ -16,6 +16,7 @@ public class WorldRenderer {
 	private Bullet bullet;
 	private Sprite rifleSprite;
 	private Texture rifleImg, bulletImg, bgImg;
+	private Target target;
 
 	public WorldRenderer(RifleGame rifleGame, World world) {
 //        this.rifleGame = rifleGame;
@@ -28,22 +29,21 @@ public class WorldRenderer {
         pm.dispose();
         
         rifle = world.getRifle();
-        bullet = world.getBullet();
+        target = new Target();
  
         rifleImg = new Texture("Rifle.png");
-        bulletImg = new Texture("Bullet.png");
         bgImg = new Texture("Background.png");
         
         rifleSprite = new Sprite(rifleImg);
         rifleSprite.setOriginCenter();
-        System.out.println(rifleSprite.getOriginX() + ":" + rifleSprite.getOriginY());
         Vector2 riflePos = world.getRifle().getPosition();
-        rifleSprite.setPosition(riflePos.x, riflePos.y);
+        rifleSprite.setPosition(riflePos.x - 39, riflePos.y - 13);
     }
 	
     public void render(float delta) {
     	world.getRifle().update();
         batch.begin();
+        target.render();
         rifleSprite.draw(batch);
         rifleSprite.setRotation(rifle.getAngle());
         batch.end();
