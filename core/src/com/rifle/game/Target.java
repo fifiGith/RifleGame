@@ -8,17 +8,18 @@ public class Target {
 	
 	private float speed = 1f;
 	private int x = 810;
-	private int y = 500;
+	private int y;
 	
 	private SpriteBatch batch;
 	private Texture targetImg;
 	private Sprite targetSprite;
 	
-	public Target() {
+	public Target(int randomy) {
 		batch = RifleGame.batch;
 		targetImg = new Texture("Target.png");
 		targetSprite = new Sprite(targetImg);
 		targetSprite.setOriginCenter();
+		y = randomy;
 	}
 	
 	public void update() {

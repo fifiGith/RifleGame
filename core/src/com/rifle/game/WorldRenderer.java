@@ -17,6 +17,7 @@ public class WorldRenderer {
 	private Sprite rifleSprite;
 	private Texture rifleImg, bulletImg, bgImg;
 	private Target target;
+	private TargetGenerator targetGenerator;
 
 	public WorldRenderer(RifleGame rifleGame, World world) {
 //        this.rifleGame = rifleGame;
@@ -29,8 +30,8 @@ public class WorldRenderer {
         pm.dispose();
         
         rifle = world.getRifle();
-        target = new Target();
- 
+        targetGenerator = world.getTargetGenerator();
+        
         rifleImg = new Texture("Rifle.png");
         bgImg = new Texture("Background.png");
         
@@ -43,7 +44,7 @@ public class WorldRenderer {
     public void render(float delta) {
     	world.getRifle().update();
         batch.begin();
-        target.render();
+        targetGenerator.render();
         rifleSprite.draw(batch);
         rifleSprite.setRotation(rifle.getAngle());
         batch.end();

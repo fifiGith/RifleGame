@@ -17,14 +17,13 @@ public class Bullet {
 		vector = new Vector2();
 		Vector2 pos = rifle.getPosition();
 		float angle = rifle.getAngle();
-		vector.set((float)Math.cos(angle * Math.PI / 180),(float)Math.sin(angle * Math.PI / 180));
+		vector.set((float)Math.cos(angle * Math.PI / 180), (float)Math.sin(angle * Math.PI / 180));
 		this.batch = RifleGame.batch;
 		bulletImg = new Texture("LongBullet.png");
 		bulletSprite = new Sprite(bulletImg);
 		bulletSprite.setOriginCenter();
 		bulletSprite.setPosition(World.X , World.Y);
 		bulletSprite.setRotation(angle);
-		System.out.println(pos.x + "," + pos.y);
 	}
 	
 	public void render() {
