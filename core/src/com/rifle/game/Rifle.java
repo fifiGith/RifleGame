@@ -5,20 +5,34 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class Rifle {
 	private Vector2 position;
-	private World world;
 	private float angle;
+	
+	private World world;
 	private Bullet bullet;
 	private ArrayList<Bullet> bulletList;
 	private Sound shot;
+	private Texture rifleImg;
+	private Sprite rifleSprite;
+	private SpriteBatch batch;
 	 
     public Rifle(int x, int y) {
-        //position = new Vector2(x - 39, y - 13);
     	position = new Vector2(x, y);
+    	
         bulletList = new ArrayList<Bullet>();
+        
+        batch = RifleGame.batch;
+        rifleImg = new Texture("Rifle.png");
+        rifleSprite = new Sprite(rifleImg);
+        rifleSprite.setOriginCenter();
+        rifleSprite.setPosition(position.x - 39, position.y - 13);
+        
         shot = Gdx.audio.newSound(Gdx.files.internal("shot.mp3"));
     }
     
@@ -52,5 +66,10 @@ public class Rifle {
     	for (Bullet bullet : bulletList) {
     	    bullet.render();
     	}
+    }
+    
+    public void render() {
+    	rifleSprite.draw(batch);
+        rifleSprite.setRotation(getAngle());
     }
 }

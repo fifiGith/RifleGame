@@ -11,8 +11,6 @@ public class World {
 	public static final int Y = 100;
 	
 	World(RifleGame rifleGame) {
-		this.rifleGame = rifleGame;
-
 		targetGenerator = new TargetGenerator();
 		rifle = new Rifle(X, Y);
 	}

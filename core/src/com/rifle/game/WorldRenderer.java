@@ -14,15 +14,12 @@ public class WorldRenderer {
 	private SpriteBatch batch;
 	private Rifle rifle;
 	private Bullet bullet;
-	private Sprite rifleSprite;
 	private Texture rifleImg, bulletImg, bgImg;
 	private Target target;
 	private TargetGenerator targetGenerator;
 
 	public WorldRenderer(RifleGame rifleGame, World world) {
-//        this.rifleGame = rifleGame;
         batch = RifleGame.batch;
- 
         this.world = world;
         
         Pixmap pm = new Pixmap(Gdx.files.internal("Cursor.png"));
@@ -32,21 +29,18 @@ public class WorldRenderer {
         rifle = world.getRifle();
         targetGenerator = world.getTargetGenerator();
         
-        rifleImg = new Texture("Rifle.png");
         bgImg = new Texture("Background.png");
-        
-        rifleSprite = new Sprite(rifleImg);
-        rifleSprite.setOriginCenter();
-        Vector2 riflePos = world.getRifle().getPosition();
-        rifleSprite.setPosition(riflePos.x - 39, riflePos.y - 13);
     }
 	
+	public void update() {
+		world.getRifle().update();
+	}
+	
     public void render(float delta) {
-    	world.getRifle().update();
+    	update();
         batch.begin();
         targetGenerator.render();
-        rifleSprite.draw(batch);
-        rifleSprite.setRotation(rifle.getAngle());
+        rifle.render();
         batch.end();
     }
 }

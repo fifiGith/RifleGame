@@ -24,7 +24,6 @@ public class TargetGenerator {
 	
 	public void render() {
 		update();
-		System.out.println(randomy);
 		for (Target target : targetList) {
 			target.render();
     	}
