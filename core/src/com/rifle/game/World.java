@@ -18,20 +18,26 @@ public class World {
 	World(RifleGame rifleGame) {
 		targetGenerator = new TargetGenerator();
 		rifle = new Rifle(X, Y);
-		
-		targetList = targetGenerator.getTargetList();
-		bulletList = rifle.getBulletList();
 	}
 	
 	public void removeOnCollistions() {
-		for (int i = 0; i < targetList.size(); i++) {
-			Target target = targetList.get(i);
-			Bullet bullet = bulletList.get(i);
-			if (target.getRectangle().overlaps(bullet.getRectangle())) {
-				targetList.remove(i);
-				bulletList.remove(i);
+		update();
+		for (int i = 0; i < bulletList.size(); i++) {
+			for (int j = 0; j < targetList.size(); j++) {
+				System.out.println(targetList.size());
+				Target target = targetList.get(i);
+				Bullet bullet = bulletList.get(i);
+				if (target.getRectangle().overlaps(bullet.getRectangle())) {
+					targetList.remove(i);
+					bulletList.remove(i);
+				}
 			}
 		}
+	}
+	
+	public void update() {
+		targetList = targetGenerator.getTargetList();
+		bulletList = rifle.getBulletList();
 	}
 	
 	TargetGenerator getTargetGenerator() {
