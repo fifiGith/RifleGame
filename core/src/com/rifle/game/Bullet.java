@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bullet {
-	private float SPEED = 60f;
+	private float SPEED = 5f;
 	
 	private Vector2 vector;
     private Sprite bulletSprite;
@@ -29,7 +29,7 @@ public class Bullet {
 		bulletSprite.setPosition(World.X , World.Y);
 		bulletSprite.setRotation(angle);
 		
-		bulletRectangle = new Rectangle();
+		bulletRectangle = new Rectangle(bulletSprite.getX(), bulletSprite.getY(), bulletSprite.getHeight(), bulletSprite.getWidth());
 		bulletRectangle.setPosition(World.X, World.Y);
 	}
 	
@@ -38,10 +38,20 @@ public class Bullet {
 	}
 	
 	public void render() {
+		Vector2 tmp = new Vector2(vector);
 		bulletSprite.translate(vector.x * SPEED, vector.y * SPEED);
-		bulletRectangle.setPosition(vector.x += SPEED, vector.y += SPEED);
+		bulletRectangle.setPosition(tmp);
+		tmp.set(vector.x + SPEED, vector.y + SPEED);
 		batch.begin();
 		bulletSprite.draw(batch);
 		batch.end();
+	}
+	
+	public float getX() {
+		return bulletSprite.getX();
+	}
+	
+	public float getY() {
+		return bulletSprite.getY();
 	}
 }

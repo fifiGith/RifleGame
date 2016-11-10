@@ -20,16 +20,34 @@ public class World {
 		rifle = new Rifle(X, Y);
 	}
 	
+	public void removeAtEdge() {
+		update();
+		for (int i = 1; i < bulletList.size(); i++) {
+			Bullet bullet = bulletList.get(i);
+			if (bullet.getX() < -30 || bullet.getY() > RifleGame.HEIGHT) {
+				bulletList.remove(i);
+			}
+		}
+		
+		for (int i = 1; i < targetList.size(); i++) {
+			Target target = targetList.get(i);
+			if (target.getX() < -30 || target.getY() > RifleGame.HEIGHT) {
+				targetList.remove(i);
+			}
+		}
+	}
+	
 	public void removeOnCollistions() {
 		update();
 		for (int i = 0; i < bulletList.size(); i++) {
 			for (int j = 0; j < targetList.size(); j++) {
-				System.out.println(targetList.size());
-				Target target = targetList.get(i);
+				Target target = targetList.get(j);
 				Bullet bullet = bulletList.get(i);
+//				System.out.println(target.getX() + ", " + target.getY());
 				if (target.getRectangle().overlaps(bullet.getRectangle())) {
-					targetList.remove(i);
+					targetList.remove(j);
 					bulletList.remove(i);
+					System.out.println("remove");
 				}
 			}
 		}

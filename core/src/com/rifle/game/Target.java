@@ -23,7 +23,7 @@ public class Target {
 		targetSprite = new Sprite(targetImg);
 		targetSprite.setOriginCenter();
 		
-		targetRectangle = new Rectangle();
+		targetRectangle = new Rectangle(targetSprite.getX(), targetSprite.getY(), targetSprite.getHeight(), targetSprite.getWidth());
 		
 		y = randomy;
 	}
@@ -36,10 +36,16 @@ public class Target {
 	public Rectangle getRectangle() {
 		return targetRectangle;
 	}
-	
+
 	public void render() {
 		update();
 		targetSprite.draw(batch);
 	}
+	public float getX() {
+		return targetSprite.getX();
+	}
 	
+	public float getY() {
+		return targetSprite.getY();
+	}
 }
