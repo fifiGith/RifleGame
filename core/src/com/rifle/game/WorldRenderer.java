@@ -34,6 +34,7 @@ public class WorldRenderer {
 	
 	public void update() {
 		world.getRifle().update();
+		world.removeOnCollistions();
 	}
 	
     public void render(float delta) {

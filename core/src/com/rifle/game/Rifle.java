@@ -72,4 +72,8 @@ public class Rifle {
     	rifleSprite.draw(batch);
         rifleSprite.setRotation(getAngle());
     }
+    
+    public ArrayList<Bullet> getBulletList() {
+    	return bulletList;
+    }
 }

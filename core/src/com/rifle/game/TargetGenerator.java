@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class TargetGenerator {
 	
+	private int min = 300;
+	private int max = 600;
+	private int chance = 1;
+			
 	private int randomy;
 	
 	private Target target;
@@ -13,13 +17,19 @@ public class TargetGenerator {
 		targetList = new ArrayList<Target>();
 	}
 	
+	ArrayList<Target> getTargetList() {
+		return targetList;
+	}
+	
 	public void random() {
-		randomy = (int) Math.round((Math.random() * 300) + 300);
+		randomy = (int) Math.round((Math.random() * (max - min)) + min);
 	}
 	
 	public void update() {
-		random();
-	    targetList.add(new Target(randomy));
+		if ((Math.random() * 100) <= chance) {
+			random();
+		    targetList.add(new Target(randomy));	
+		}
 	}
 	
 	public void render() {
