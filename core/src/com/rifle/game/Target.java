@@ -10,6 +10,7 @@ public class Target {
 	private float speed = 1f;
 	private int x = 810;
 	private int y;
+	private int pixel = 30;
 	
 	private SpriteBatch batch;
 	private Texture targetImg;
@@ -23,7 +24,7 @@ public class Target {
 		targetSprite = new Sprite(targetImg);
 		targetSprite.setOriginCenter();
 		
-		targetRectangle = new Rectangle(targetSprite.getX(), targetSprite.getY(), targetSprite.getHeight(), targetSprite.getWidth());
+		targetRectangle = new Rectangle(targetSprite.getX() - pixel, targetSprite.getY() - pixel, targetSprite.getHeight() - pixel, targetSprite.getWidth() - pixel);
 		
 		y = randomy;
 	}

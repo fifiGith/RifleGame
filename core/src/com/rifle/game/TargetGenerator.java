@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class TargetGenerator {
 	
 	private int min = 300;
-	private int max = 600;
+	private int max = 580;
 	private int chance = 3;
 			
 	private int randomy;

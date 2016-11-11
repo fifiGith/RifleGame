@@ -12,9 +12,7 @@ public class World {
 	private TargetGenerator targetGenerator;
 	private ArrayList<Target> targetList;
 	private ArrayList<Bullet> bulletList;
-//	private Bullet bullet;
-//	private Target target;
-	
+
 	World(RifleGame rifleGame) {
 		targetGenerator = new TargetGenerator();
 		rifle = new Rifle(X, Y);
@@ -40,14 +38,12 @@ public class World {
 	public void removeOnCollistions() {
 		update();
 		for (int i = 0; i < bulletList.size(); i++) {
+			Bullet bullet = bulletList.get(i);
 			for (int j = 0; j < targetList.size(); j++) {
 				Target target = targetList.get(j);
-				Bullet bullet = bulletList.get(i);
-//				System.out.println(target.getX() + ", " + target.getY());
 				if (target.getRectangle().overlaps(bullet.getRectangle())) {
 					targetList.remove(j);
 					bulletList.remove(i);
-					System.out.println("remove");
 				}
 			}
 		}

@@ -37,14 +37,15 @@ public class Bullet {
 		return bulletRectangle;
 	}
 	
-	public void render() {
-		Vector2 tmp = new Vector2(vector);
+	public void update() {
 		bulletSprite.translate(vector.x * SPEED, vector.y * SPEED);
-		bulletRectangle.setPosition(tmp);
-		tmp.set(vector.x + SPEED, vector.y + SPEED);
-//		batch.begin();
+		bulletRectangle.setPosition(getX(), getY());
+//		System.out.println(tmp.x + ", " + bulletSprite.getX());
+	}
+	
+	public void render() {
+		update();
 		bulletSprite.draw(batch);
-//		batch.end();
 	}
 	
 	public float getX() {
