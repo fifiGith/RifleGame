@@ -69,6 +69,7 @@ public class Rifle {
     }
     
     public void render() {
+    	update();
     	rifleSprite.draw(batch);
         rifleSprite.setRotation(getAngle());
     }

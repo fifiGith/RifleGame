@@ -42,9 +42,9 @@ public class Bullet {
 		bulletSprite.translate(vector.x * SPEED, vector.y * SPEED);
 		bulletRectangle.setPosition(tmp);
 		tmp.set(vector.x + SPEED, vector.y + SPEED);
-		batch.begin();
+//		batch.begin();
 		bulletSprite.draw(batch);
-		batch.end();
+//		batch.end();
 	}
 	
 	public float getX() {

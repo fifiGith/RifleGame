@@ -33,7 +33,7 @@ public class WorldRenderer {
     }
 	
 	public void update() {
-		world.getRifle().update();
+		//world.getRifle().update();
 		world.removeOnCollistions();
 		world.removeAtEdge();
 	}
@@ -41,8 +41,9 @@ public class WorldRenderer {
     public void render(float delta) {
     	update();
         batch.begin();
-        targetGenerator.render();
+        batch.draw(bgImg, 0, 0);
         rifle.render();
+        targetGenerator.render();
         batch.end();
     }
 }
