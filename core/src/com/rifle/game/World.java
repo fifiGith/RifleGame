@@ -7,6 +7,7 @@ public class World {
 	public static final int X = 100;
 	public static final int Y = 100;
 	
+	private int score;
 	private Rifle rifle;
 	private RifleGame rifleGame;
 	private TargetGenerator targetGenerator;
@@ -16,6 +17,7 @@ public class World {
 	World(RifleGame rifleGame) {
 		targetGenerator = new TargetGenerator();
 		rifle = new Rifle(X, Y);
+		score = 0;
 	}
 	
 	public void removeAtEdge() {
@@ -44,6 +46,7 @@ public class World {
 				if (target.getRectangle().overlaps(bullet.getRectangle())) {
 					targetList.remove(j);
 					bulletList.remove(i);
+					score += 1;
 				}
 			}
 		}
@@ -60,5 +63,9 @@ public class World {
 	
 	Rifle getRifle() {
 		return rifle;
+	}
+	
+	public int getScore() {
+		return score;
 	}
 }
