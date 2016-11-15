@@ -24,7 +24,7 @@ public class World {
 		targetGenerator = new TargetGenerator();
 		rifle = new Rifle(X, Y);
 		score = 0;
-		pop = Gdx.audio.newSound(Gdx.files.internal("Pop2.mp3"));
+		pop = Gdx.audio.newSound(Gdx.files.internal("cutePop.mp3"));
 	}
 	
 	public void removeAtEdge() {
@@ -42,6 +42,13 @@ public class World {
 				targetList.remove(i);
 			}
 		}
+		
+		for (int i = 1; i < skullList.size(); i++) {
+			Skull skull = skullList.get(i);
+			if (skull.getX() < -30 || skull.getY() > RifleGame.HEIGHT) {
+				skullList.remove(i);
+			}
+		}
 	}
 	
 	public void removeOnCollistions() {
@@ -53,7 +60,7 @@ public class World {
 			for (int j = 0; j < targetList.size(); j++) {
 				Target target = targetList.get(j);
 				if (target.getRectangle().overlaps(bullet.getRectangle())) {
-					pop.play(15.0f);
+					pop.play(100.0f);
 					targetList.remove(j);
 					bulletList.remove(i);
 					score += 1;
@@ -67,7 +74,7 @@ public class World {
 			for (int j = 0; j < skullList.size(); j++) {
 				Skull skull = skullList.get(j);
 				if (skull.getRectangle().overlaps(bullet.getRectangle())) {
-					pop.play(15.0f);
+					pop.play(100.0f);
 					skullList.remove(j);
 					bulletList.remove(i);
 				}
