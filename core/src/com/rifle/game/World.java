@@ -11,9 +11,11 @@ public class World {
 	public static final int Y = 100;
 	
 	private int score;
+	public int life;
 	
 	private Rifle rifle;
 	private TargetGenerator targetGenerator;
+	private LifeBar lifeBar;
 	
 	private ArrayList<Target> targetList;
 	private ArrayList<Bullet> bulletList;
@@ -21,39 +23,42 @@ public class World {
 	private ArrayList<Heart> heartList;
 	
 	private Sound pop;
-	
 
 	World(RifleGame rifleGame) {
 		targetGenerator = new TargetGenerator();
 		rifle = new Rifle(X, Y);
+		lifeBar = new LifeBar(this);
+		
 		score = 0;
+		life = 3;
+		
 		pop = Gdx.audio.newSound(Gdx.files.internal("cutePop.mp3"));
 	}
 	
 	public void removeAtEdge() {
 		update();
-		for (int i = 1; i < bulletList.size(); i++) {
+		for (int i = 0; i < bulletList.size(); i++) {
 			Bullet bullet = bulletList.get(i);
 			if (bullet.getX() < -30 || bullet.getY() > RifleGame.HEIGHT) {
 				bulletList.remove(i);
 			}
 		}
 		
-		for (int i = 1; i < targetList.size(); i++) {
+		for (int i = 0; i < targetList.size(); i++) {
 			Target target = targetList.get(i);
 			if (target.getX() < -30 || target.getY() > RifleGame.HEIGHT) {
 				targetList.remove(i);
 			}
 		}
 		
-		for (int i = 1; i < skullList.size(); i++) {
+		for (int i = 0; i < skullList.size(); i++) {
 			Skull skull = skullList.get(i);
 			if (skull.getX() < -30 || skull.getY() > RifleGame.HEIGHT) {
 				skullList.remove(i);
 			}
 		}
 		
-		for (int i = 1; i < heartList.size(); i++) {
+		for (int i = 0; i < heartList.size(); i++) {
 			Heart heart = heartList.get(i);
 			if (heart.getX() < -30 || heart.getY() > RifleGame.HEIGHT) {
 				heartList.remove(i);
@@ -87,6 +92,8 @@ public class World {
 					pop.play(100.0f);
 					skullList.remove(j);
 					bulletList.remove(i);
+					life -= 1;
+					lifeBar.remove();
 				}
 			}
 		}
@@ -100,6 +107,7 @@ public class World {
 					pop.play(100.0f);
 					heartList.remove(j);
 					bulletList.remove(i);
+					life += 1;
 				}
 			}
 		}
@@ -120,7 +128,16 @@ public class World {
 		return rifle;
 	}
 	
+	LifeBar getLifeBar() {
+		return lifeBar;
+	}
+	
 	public int getScore() {
 		return score;
 	}
+	
+	public int getLife() {
+		return life;
+	}
+	
 }
