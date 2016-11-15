@@ -11,14 +11,16 @@ public class World {
 	public static final int Y = 100;
 	
 	private int score;
+	
 	private Rifle rifle;
-	private RifleGame rifleGame;
 	private TargetGenerator targetGenerator;
+	
 	private ArrayList<Target> targetList;
 	private ArrayList<Bullet> bulletList;
-	private Sound pop;
 	private ArrayList<Skull> skullList;
 	private ArrayList<Heart> heartList;
+	
+	private Sound pop;
 	
 
 	World(RifleGame rifleGame) {

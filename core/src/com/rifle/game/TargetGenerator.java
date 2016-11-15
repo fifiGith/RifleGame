@@ -6,8 +6,10 @@ public class TargetGenerator {
 	
 	private int min = 300;
 	private int max = 550;
+	
 	private int chance = 10;
 	private int skullChance = 10;
+	private int heartChance = 1;
 			
 	private int randomy;
 	
@@ -48,7 +50,7 @@ public class TargetGenerator {
 			skullList.add(new Skull(randomy));
 		}
 		
-		if ((Math.random() * 100) <= chance) {
+		if ((Math.random() * 100) <= heartChance) {
 			random();
 			heartList.add(new Heart(randomy));	
 		}

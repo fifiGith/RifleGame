@@ -14,8 +14,6 @@ public class Rifle {
 	private Vector2 position;
 	private float angle;
 	
-	private World world;
-	private Bullet bullet;
 	private ArrayList<Bullet> bulletList;
 	private Sound shot;
 	private Texture rifleImg;

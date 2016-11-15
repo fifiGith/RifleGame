@@ -17,7 +17,6 @@ public class Bullet {
 	
 	public Bullet(Rifle rifle) {
 		vector = new Vector2();
-		Vector2 pos = rifle.getPosition();
 		float angle = rifle.getAngle();
 		vector.set((float)Math.cos(angle * Math.PI / 180), (float)Math.sin(angle * Math.PI / 180));
 		
@@ -40,7 +39,6 @@ public class Bullet {
 	public void update() {
 		bulletSprite.translate(vector.x * SPEED, vector.y * SPEED);
 		bulletRectangle.setPosition(getX(), getY());
-//		System.out.println(tmp.x + ", " + bulletSprite.getX());
 	}
 	
 	public void render() {
