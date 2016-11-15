@@ -18,6 +18,7 @@ public class World {
 	private ArrayList<Bullet> bulletList;
 	private Sound pop;
 	private ArrayList<Skull> skullList;
+	private ArrayList<Heart> heartList;
 	
 
 	World(RifleGame rifleGame) {
@@ -47,6 +48,13 @@ public class World {
 			Skull skull = skullList.get(i);
 			if (skull.getX() < -30 || skull.getY() > RifleGame.HEIGHT) {
 				skullList.remove(i);
+			}
+		}
+		
+		for (int i = 1; i < heartList.size(); i++) {
+			Heart heart = heartList.get(i);
+			if (heart.getX() < -30 || heart.getY() > RifleGame.HEIGHT) {
+				heartList.remove(i);
 			}
 		}
 	}
@@ -80,12 +88,26 @@ public class World {
 				}
 			}
 		}
+		
+		//bullet + heart
+		for (int i = 0; i < bulletList.size(); i++) {
+			Bullet bullet = bulletList.get(i);
+			for (int j = 0; j < heartList.size(); j++) {
+				Heart heart = heartList.get(j);
+				if (heart.getRectangle().overlaps(bullet.getRectangle())) {
+					pop.play(100.0f);
+					heartList.remove(j);
+					bulletList.remove(i);
+				}
+			}
+		}
 	}
 	
 	public void update() {
 		targetList = targetGenerator.getTargetList();
 		bulletList = rifle.getBulletList();
 		skullList = targetGenerator.getSkullList();
+		heartList = targetGenerator.getHeartList();
 	}
 	
 	TargetGenerator getTargetGenerator() {

@@ -10,7 +10,6 @@ public class Target {
 	private float speed = 1f;
 	private int x = 810;
 	private int y;
-	private int pixel = 30;
 	
 	private SpriteBatch batch;
 	private Texture targetImg;

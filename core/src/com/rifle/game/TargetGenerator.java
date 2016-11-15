@@ -11,13 +11,14 @@ public class TargetGenerator {
 			
 	private int randomy;
 	
-	private Target target;
 	private ArrayList<Target> targetList;
 	private ArrayList<Skull> skullList;
+	private ArrayList<Heart> heartList;
 
 	public TargetGenerator() {
 		targetList = new ArrayList<Target>();
 		skullList = new ArrayList<Skull>();
+		heartList = new ArrayList<Heart>();
 	}
 	
 	ArrayList<Target> getTargetList() {
@@ -26,6 +27,10 @@ public class TargetGenerator {
 	
 	ArrayList<Skull> getSkullList() {
 		return skullList;
+	}
+	
+	ArrayList<Heart> getHeartList() {
+		return heartList;
 	}
 	
 	public void random() {
@@ -42,6 +47,11 @@ public class TargetGenerator {
 			random();
 			skullList.add(new Skull(randomy));
 		}
+		
+		if ((Math.random() * 100) <= chance) {
+			random();
+			heartList.add(new Heart(randomy));	
+		}
 	}
 	
 	public void render() {
@@ -51,6 +61,9 @@ public class TargetGenerator {
     	}
 		for (Skull skull : skullList) {
 			skull.render();
+    	}
+		for (Heart heart : heartList) {
+			heart.render();
     	}
 	}
 }
