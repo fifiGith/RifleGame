@@ -56,7 +56,7 @@ public class Rifle {
     
     public void shoot() {
     	bulletList.add(new Bullet(this));
-    	shot.play(1.0f);
+    	//shot.play(1.0f);
     }
     
     public void update() {

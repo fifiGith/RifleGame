@@ -2,6 +2,9 @@ package com.rifle.game;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+
 public class World {
 	
 	public static final int X = 100;
@@ -13,11 +16,15 @@ public class World {
 	private TargetGenerator targetGenerator;
 	private ArrayList<Target> targetList;
 	private ArrayList<Bullet> bulletList;
+	private Sound pop;
+	private ArrayList<Skull> skullList;
+	
 
 	World(RifleGame rifleGame) {
 		targetGenerator = new TargetGenerator();
 		rifle = new Rifle(X, Y);
 		score = 0;
+		pop = Gdx.audio.newSound(Gdx.files.internal("Pop2.mp3"));
 	}
 	
 	public void removeAtEdge() {
@@ -39,14 +46,30 @@ public class World {
 	
 	public void removeOnCollistions() {
 		update();
+		
+		//bullet + target
 		for (int i = 0; i < bulletList.size(); i++) {
 			Bullet bullet = bulletList.get(i);
 			for (int j = 0; j < targetList.size(); j++) {
 				Target target = targetList.get(j);
 				if (target.getRectangle().overlaps(bullet.getRectangle())) {
+					pop.play(15.0f);
 					targetList.remove(j);
 					bulletList.remove(i);
 					score += 1;
+				}
+			}
+		}
+		
+		//bullet + skull
+		for (int i = 0; i < bulletList.size(); i++) {
+			Bullet bullet = bulletList.get(i);
+			for (int j = 0; j < skullList.size(); j++) {
+				Skull skull = skullList.get(j);
+				if (skull.getRectangle().overlaps(bullet.getRectangle())) {
+					pop.play(15.0f);
+					skullList.remove(j);
+					bulletList.remove(i);
 				}
 			}
 		}
@@ -55,6 +78,7 @@ public class World {
 	public void update() {
 		targetList = targetGenerator.getTargetList();
 		bulletList = rifle.getBulletList();
+		skullList = targetGenerator.getSkullList();
 	}
 	
 	TargetGenerator getTargetGenerator() {

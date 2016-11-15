@@ -7,18 +7,25 @@ public class TargetGenerator {
 	private int min = 300;
 	private int max = 550;
 	private int chance = 10;
+	private int skullChance = 10;
 			
 	private int randomy;
 	
 	private Target target;
 	private ArrayList<Target> targetList;
+	private ArrayList<Skull> skullList;
 
 	public TargetGenerator() {
 		targetList = new ArrayList<Target>();
+		skullList = new ArrayList<Skull>();
 	}
 	
 	ArrayList<Target> getTargetList() {
 		return targetList;
+	}
+	
+	ArrayList<Skull> getSkullList() {
+		return skullList;
 	}
 	
 	public void random() {
@@ -30,12 +37,20 @@ public class TargetGenerator {
 			random();
 		    targetList.add(new Target(randomy));	
 		}
+		
+		if ((Math.random() * 100) <= skullChance) {
+			random();
+			skullList.add(new Skull(randomy));
+		}
 	}
 	
 	public void render() {
 		update();
 		for (Target target : targetList) {
 			target.render();
+    	}
+		for (Skull skull : skullList) {
+			skull.render();
     	}
 	}
 }

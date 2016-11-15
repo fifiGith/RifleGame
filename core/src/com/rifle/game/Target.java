@@ -42,6 +42,7 @@ public class Target {
 		update();
 		targetSprite.draw(batch);
 	}
+	
 	public float getX() {
 		return targetSprite.getX();
 	}
