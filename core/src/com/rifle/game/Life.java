@@ -21,12 +21,18 @@ public class Life {
 		lifeImg = new Texture("Heart.png");
 		lifeSprite = new Sprite(lifeImg);
 		
+		System.out.println(i + "const.");
 		x = ((int) (lifeSprite.getWidth() + space)) * i;
-		
+		System.out.println(x);
 		lifeSprite.setPosition(x, y);
+		System.out.println(lifeSprite.getX());
+
 	}
 	
-	public void render() {
+	public void render(int i) {
+		
 		lifeSprite.draw(batch);
+//		System.out.println("draw" + i);
+//		System.out.println(x);
 	}
 }

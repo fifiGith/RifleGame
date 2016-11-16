@@ -30,7 +30,7 @@ public class World {
 		lifeBar = new LifeBar(this);
 		
 		score = 0;
-		life = 3;
+		life = 5;
 		
 		pop = Gdx.audio.newSound(Gdx.files.internal("cutePop.mp3"));
 	}

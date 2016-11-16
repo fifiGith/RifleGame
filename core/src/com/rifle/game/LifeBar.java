@@ -6,38 +6,40 @@ public class LifeBar {
 	
 	World world;
 	
-	private int life;
+	private int size;
 	
 	private ArrayList<Life> lifeList;
 
 	public LifeBar(World world) {
 		this.world = world;
 		
-		life = world.getLife();
-		
 		lifeList = new ArrayList<Life>();
 	}
 	
 	public void update() {
-		if (life < world.getLife()) {
-			life = world.getLife();
-		}
+		size = world.getLife();
 		
-		for (int i = 0; i < life; i++) {
+		for (int i = 0; i < size; i++) {
 			lifeList.add(new Life(i));
 		}
 	}
 	
 	public void render() {
 		update();
-		for (Life life : lifeList) {
-			life.render();
+		for (int i = 0; i < lifeList.size() - 1; i++) {
+			Life life = lifeList.get(i);
+			life.render(i);
 		}
 	}
 	
 	public void remove() {
 		update();
-		lifeList.remove(lifeList.size() - 1);
+		if (lifeList.size() > 0) {
+			lifeList.remove(lifeList.size() - 1);
+		}
 	}
 	
+	public ArrayList<Life> getLifeList() {
+		return lifeList;
+	}
 }
