@@ -21,7 +21,7 @@ public class World {
 	private ArrayList<Skull> skullList;
 	private ArrayList<Heart> heartList;
 	
-	private Sound pop;
+	private Sound pop, lifeDecrease, lifeUp;
 	
 
 	World(RifleGame rifleGame) {
@@ -31,7 +31,9 @@ public class World {
 		score = 0;
 		life = 3;
 		
-		pop = Gdx.audio.newSound(Gdx.files.internal("cutePop.mp3"));
+		pop = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
+		lifeDecrease = Gdx.audio.newSound(Gdx.files.internal("lifeDecrease.mp3"));
+		lifeUp = Gdx.audio.newSound(Gdx.files.internal("lifeUp.mp3"));
 	}
 	
 	public void removeAtEdge() {
@@ -47,6 +49,8 @@ public class World {
 			Target target = targetList.get(i);
 			if (target.getX() < -30 || target.getY() > RifleGame.HEIGHT) {
 				targetList.remove(i);
+				life -= 1;
+				lifeDecrease.play(1.0f);
 			}
 		}
 		
@@ -88,7 +92,7 @@ public class World {
 			for (int j = 0; j < skullList.size(); j++) {
 				Skull skull = skullList.get(j);
 				if (skull.getRectangle().overlaps(bullet.getRectangle())) {
-					pop.play(100.0f);
+					lifeDecrease.play(1.0f);
 					skullList.remove(j);
 					bulletList.remove(i);
 					life -= 1;
@@ -102,7 +106,7 @@ public class World {
 			for (int j = 0; j < heartList.size(); j++) {
 				Heart heart = heartList.get(j);
 				if (heart.getRectangle().overlaps(bullet.getRectangle())) {
-					pop.play(100.0f);
+					lifeUp.play(1.0f);
 					heartList.remove(j);
 					bulletList.remove(i);
 					life += 1;
