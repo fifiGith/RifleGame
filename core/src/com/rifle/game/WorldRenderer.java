@@ -38,8 +38,7 @@ public class WorldRenderer {
     }
 	
 	public void update() {
-		//world.getRifle().update();
-		world.removeOnCollistions();
+		world.removeOnCollisions();
 		world.removeAtEdge();
 	}
 	

@@ -7,8 +7,8 @@ public class TargetGenerator {
 	private int min = 300;
 	private int max = 550;
 	
-	private float chance = 1.8f;
-	private float skullChance = 0.25f;
+	private float chance = 1.85f;
+	private float skullChance = 0.30f;
 	private float heartChance = 0.25f;
 			
 	private int randomy;

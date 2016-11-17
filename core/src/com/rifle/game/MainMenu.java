@@ -52,11 +52,13 @@ public class MainMenu {
 		if ((x >= startRectangle.x && x <= srx) && (y >= startRectangle.y && y <= sry)) {
 			screen = new Texture("Start.png");
 			if (Gdx.input.justTouched()) {
+				GameScreen.click.play(1.0f);
 				start();
 			}
 		} else if ((x >= exitRectangle.x && x <= erx) && (y >= exitRectangle.y && y <= ery)) {
 			screen = new Texture("Exit.png");
 			if (Gdx.input.justTouched()) {
+				GameScreen.click.play(1.0f);
 				exit();
 			}
 		} else {

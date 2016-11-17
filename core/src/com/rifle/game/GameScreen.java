@@ -2,6 +2,7 @@ package com.rifle.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,16 +18,21 @@ public class GameScreen extends ScreenAdapter {
 	private MainMenu mainMenu;
 	private GameOver gameOver;
 	 
+	public static Sound click;
+	
     public GameScreen(RifleGame rifleGame) {
         this.rifleGame = rifleGame;
 
         world = new World(rifleGame);
         worldRenderer = new WorldRenderer(rifleGame, world);
         mainMenu = new MainMenu();
-        gameOver = new GameOver();
+        gameOver = new GameOver(world);
+        
+        click = Gdx.audio.newSound(Gdx.files.internal("click.mp3"));
     }
     
     private void update(float delta) {
+    	
     }
     
     @Override

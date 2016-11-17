@@ -69,7 +69,7 @@ public class World {
 		}
 	}
 	
-	public void removeOnCollistions() {
+	public void removeOnCollisions() {
 		update();
 		
 		//bullet + target
