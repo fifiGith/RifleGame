@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Bullet {
-	private float SPEED = 5f;
+	private float SPEED = 8f;
 	
 	private Vector2 vector;
     private Sprite bulletSprite;

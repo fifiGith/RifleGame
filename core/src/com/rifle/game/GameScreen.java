@@ -14,12 +14,16 @@ public class GameScreen extends ScreenAdapter {
 	private Rifle rifle;
 	private World world;
 	private WorldRenderer worldRenderer;
+	private MainMenu mainMenu;
+	private GameOver gameOver;
 	 
     public GameScreen(RifleGame rifleGame) {
         this.rifleGame = rifleGame;
 
         world = new World(rifleGame);
         worldRenderer = new WorldRenderer(rifleGame, world);
+        mainMenu = new MainMenu();
+        gameOver = new GameOver();
     }
     
     private void update(float delta) {
@@ -32,8 +36,25 @@ public class GameScreen extends ScreenAdapter {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
-        if (world.getLife() > 0) {
-        	worldRenderer.render(delta);
-        }
+        if (mainMenu.exit) {
+        	Gdx.app.exit();
+        } else if (!mainMenu.start) {
+        	mainMenu.render();
+        } else {
+        	if (world.getLife() > 0) {
+            	worldRenderer.render(delta);
+            } else {
+            	gameOver.render();
+            	if (gameOver.mainMenu) {
+            		mainMenu.backToMainMenu();
+            		world = new World(rifleGame);
+            		worldRenderer = new WorldRenderer(rifleGame, world);
+            	} else if (gameOver.tryAgain) {
+            		world = new World(rifleGame);
+            		worldRenderer = new WorldRenderer(rifleGame, world);
+            		gameOver.tryAgainClicked();
+            	}
+            }
+        }  
     }
 }
