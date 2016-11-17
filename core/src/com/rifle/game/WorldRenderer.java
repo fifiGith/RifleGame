@@ -15,7 +15,7 @@ public class WorldRenderer {
 	private SpriteBatch batch;
 	private Rifle rifle;
 	private Bullet bullet;
-	private Texture rifleImg, bulletImg, bgImg;
+	private Texture heartImg, bgImg;
 	private Target target;
 	private TargetGenerator targetGenerator;
 	private BitmapFont font;
@@ -34,6 +34,7 @@ public class WorldRenderer {
         targetGenerator = world.getTargetGenerator();
         
         bgImg = new Texture("Background.png");
+        heartImg = new Texture("Heart.png");
     }
 	
 	public void update() {
@@ -48,7 +49,9 @@ public class WorldRenderer {
         batch.draw(bgImg, 0, 0);
         rifle.render();
         targetGenerator.render();
-        font.draw(batch, "Score: " + world.getScore(), 20, 580);
+        font.draw(batch, "Score: " + world.getScore(), 300, 50);
+        font.draw(batch," X " + world.getLife(), 450, 50);
+        batch.draw(heartImg, 415, 35);
         batch.end();
     }
 }

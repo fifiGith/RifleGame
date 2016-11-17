@@ -11,6 +11,7 @@ public class World {
 	public static final int Y = 100;
 	
 	private int score;
+	private int life;
 	
 	private Rifle rifle;
 	private TargetGenerator targetGenerator;
@@ -26,7 +27,10 @@ public class World {
 	World(RifleGame rifleGame) {
 		targetGenerator = new TargetGenerator();
 		rifle = new Rifle(X, Y);
+		
 		score = 0;
+		life = 3;
+		
 		pop = Gdx.audio.newSound(Gdx.files.internal("cutePop.mp3"));
 	}
 	
@@ -87,6 +91,7 @@ public class World {
 					pop.play(100.0f);
 					skullList.remove(j);
 					bulletList.remove(i);
+					life -= 1;
 				}
 			}
 		}
@@ -100,6 +105,7 @@ public class World {
 					pop.play(100.0f);
 					heartList.remove(j);
 					bulletList.remove(i);
+					life += 1;
 				}
 			}
 		}
@@ -122,5 +128,9 @@ public class World {
 	
 	public int getScore() {
 		return score;
+	}
+	
+	public int getLife() {
+		return life;
 	}
 }
