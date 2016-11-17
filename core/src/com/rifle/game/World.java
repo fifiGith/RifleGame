@@ -11,11 +11,9 @@ public class World {
 	public static final int Y = 100;
 	
 	private int score;
-	public int life;
 	
 	private Rifle rifle;
 	private TargetGenerator targetGenerator;
-	private LifeBar lifeBar;
 	
 	private ArrayList<Target> targetList;
 	private ArrayList<Bullet> bulletList;
@@ -23,15 +21,12 @@ public class World {
 	private ArrayList<Heart> heartList;
 	
 	private Sound pop;
+	
 
 	World(RifleGame rifleGame) {
 		targetGenerator = new TargetGenerator();
 		rifle = new Rifle(X, Y);
-		lifeBar = new LifeBar(this);
-		
 		score = 0;
-		life = 5;
-		
 		pop = Gdx.audio.newSound(Gdx.files.internal("cutePop.mp3"));
 	}
 	
@@ -92,8 +87,6 @@ public class World {
 					pop.play(100.0f);
 					skullList.remove(j);
 					bulletList.remove(i);
-					life -= 1;
-					lifeBar.remove();
 				}
 			}
 		}
@@ -107,7 +100,6 @@ public class World {
 					pop.play(100.0f);
 					heartList.remove(j);
 					bulletList.remove(i);
-					life += 1;
 				}
 			}
 		}
@@ -128,16 +120,7 @@ public class World {
 		return rifle;
 	}
 	
-	LifeBar getLifeBar() {
-		return lifeBar;
-	}
-	
 	public int getScore() {
 		return score;
 	}
-	
-	public int getLife() {
-		return life;
-	}
-	
 }

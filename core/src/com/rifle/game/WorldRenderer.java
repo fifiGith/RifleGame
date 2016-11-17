@@ -14,10 +14,11 @@ public class WorldRenderer {
 	private World world;
 	private SpriteBatch batch;
 	private Rifle rifle;
-	private Texture bgImg;
+	private Bullet bullet;
+	private Texture rifleImg, bulletImg, bgImg;
+	private Target target;
 	private TargetGenerator targetGenerator;
 	private BitmapFont font;
-	private LifeBar lifeBar;
 
 	public WorldRenderer(RifleGame rifleGame, World world) {
         batch = RifleGame.batch;
@@ -31,12 +32,12 @@ public class WorldRenderer {
         
         rifle = world.getRifle();
         targetGenerator = world.getTargetGenerator();
-        lifeBar = world.getLifeBar();
         
         bgImg = new Texture("Background.png");
     }
 	
 	public void update() {
+		//world.getRifle().update();
 		world.removeOnCollistions();
 		world.removeAtEdge();
 	}
@@ -45,7 +46,6 @@ public class WorldRenderer {
     	update();
         batch.begin();
         batch.draw(bgImg, 0, 0);
-        lifeBar.render();
         rifle.render();
         targetGenerator.render();
         font.draw(batch, "Score: " + world.getScore(), 20, 580);
