@@ -55,10 +55,12 @@ public class GameScreen extends ScreenAdapter {
             		mainMenu.backToMainMenu();
             		world = new World(rifleGame);
             		worldRenderer = new WorldRenderer(rifleGame, world);
+            		gameOver = new GameOver(world);
             	} else if (gameOver.tryAgain) {
             		world = new World(rifleGame);
             		worldRenderer = new WorldRenderer(rifleGame, world);
             		gameOver.tryAgainClicked();
+            		gameOver = new GameOver(world);
             	}
             }
         }  
